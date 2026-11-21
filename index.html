@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Saffron &amp; Salt | Artisanal Kitchen &amp; Bistro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="navbar">
+    <div class="container nav-content">
+      <a href="#" class="logo">Saffron <span>&amp;</span> Salt</a>
+      <nav class="nav-links">
+        <a href="#menu">Menu</a>
+        <a href="#story">Our Story</a>
+        <a href="#visit">Visit Us</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="btn-outline" id="openReserveBtn">Book a Table</button>
+        <button class="cart-btn" id="openCartBtn" aria-label="Open Cart">
+          <span>Order</span>
+          <span class="cart-badge" id="cartCount">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-text">
+        <span class="eyebrow">Seasonal • Wood-Fired • Handcrafted</span>
+        <h1>Modern coastal flavours rooted in <em>timeless craft.</em></h1>
+        <p>From slow-simmered spice reductions to hearth-baked sourdough, every plate celebrates small-batch regional harvests.</p>
+        <div class="hero-cta">
+          <a href="#menu" class="btn-primary">Explore the Menu</a>
+          <button class="btn-ghost" id="heroReserveBtn">Reserve Evening Seating →</button>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card">
+          <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80" alt="Signature Wood-Fired Dish" />
+          <div class="hero-tag">
+            <strong>Chef's Tasting Plate</strong>
+            <span>Charred octopus, saffron emulsion &amp; pickled fennel</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Menu Section -->
+  <section id="menu" class="menu-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Curated Daily</span>
+        <h2>Seasonal Menu</h2>
+        <p>Filter by course and add items directly to your takeaway or table order.</p>
+      </div>
+
+      <!-- Category Filter Tabs -->
+      <div class="filter-bar" role="tablist">
+        <button class="filter-btn active" data-category="all">All Dishes</button>
+        <button class="filter-btn" data-category="starters">Small Plates</button>
+        <button class="filter-btn" data-category="mains">Hearth Mains</button>
+        <button class="filter-btn" data-category="desserts">Desserts</button>
+      </div>
+
+      <!-- Menu Cards Grid (Populated via script.js) -->
+      <div class="menu-grid" id="menuGrid"></div>
+    </div>
+  </section>
+
+  <!-- Story / Philosophy Section -->
+  <section id="story" class="story-section">
+    <div class="container story-grid">
+      <div class="story-image">
+        <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=900&q=80" alt="Chef plating dish in kitchen" />
+      </div>
+      <div class="story-content">
+        <span class="eyebrow">Our Philosophy</span>
+        <h2>Honest ingredients, treated with patience.</h2>
+        <p>We partner directly with coastal fishermen, organic spice estates, and heritage grain millers. Our kitchen avoids shortcuts—roasting whole spices each morning and fermenting our doughs for 36 hours.</p>
+        <div class="stats-row">
+          <div>
+            <strong>100%</strong>
+            <span>Traceable Produce</span>
+          </div>
+          <div>
+            <strong>36 hr</strong>
+            <span>Wild Fermentation</span>
+          </div>
+          <div>
+            <strong>4.9 ★</strong>
+            <span>Guest Rating</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="visit" class="footer">
+    <div class="container footer-grid">
+      <div>
+        <a href="#" class="logo footer-logo">Saffron <span>&amp;</span> Salt</a>
+        <p class="footer-desc">14 Heritage Lane, Kala Ghoda • Open Tue–Sun, 12:00 PM – 11:30 PM</p>
+      </div>
+      <div class="footer-right">
+        <p>Reservations &amp; Private Dining</p>
+        <a href="tel:+912255501928" class="footer-phone">+91 (22) 5550-1928</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Slide-Out Cart Drawer -->
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+    <div class="drawer-header">
+      <h3>Your Order</h3>
+      <button class="close-btn" id="closeCartBtn" aria-label="Close Cart">&times;</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <p class="empty-msg">Your order bag is empty. Select dishes from the menu to begin.</p>
+    </div>
+    <div class="drawer-footer">
+      <div class="total-row">
+        <span>Subtotal</span>
+        <strong id="cartTotal">₹0</strong>
+      </div>
+      <button class="btn-primary full-width" id="checkoutBtn">Place Order</button>
+    </div>
+  </aside>
+
+  <!-- Table Reservation Modal -->
+  <div class="modal-backdrop" id="reserveModal" aria-hidden="true">
+    <div class="modal-card">
+      <button class="close-btn modal-close" id="closeReserveBtn" aria-label="Close Modal">&times;</button>
+      <span class="eyebrow">Evening &amp; Lunch Seating</span>
+      <h3>Reserve a Table</h3>
+      <form id="reserveForm" class="reserve-form">
+        <label>
+          Full Name
+          <input type="text" id="guestName" required placeholder="e.g. Rohan Mehta" />
+        </label>
+        <div class="form-row">
+          <label>
+            Guests
+            <select id="guestCount">
+              <option value="2">2 Guests</option>
+              <option value="4">4 Guests</option>
+              <option value="6">6 Guests</option>
+              <option value="8">8 Guests</option>
+            </select>
+          </label>
+          <label>
+            Date
+            <input type="date" id="reserveDate" required />
+          </label>
+        </div>
+        <label>
+          Preferred Time
+          <select id="reserveTime">
+            <option>1:00 PM (Lunch)</option>
+            <option>7:30 PM (First Seating)</option>
+            <option>9:30 PM (Late Seating)</option>
+          </select>
+        </label>
+        <button type="submit" class="btn-primary full-width">Confirm Reservation</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
